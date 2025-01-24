@@ -2,48 +2,67 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:smit_project_ui/Ui/EditScreen/edit_provider.dart';
+import 'package:smit_project_ui/Ui/ForgotScreen/forgot_provider.dart';
 import 'package:smit_project_ui/Ui/SignInScreen/sign_in_screen.dart';
 
-class EditScreen extends StatefulWidget {
-  const EditScreen({super.key});
+class ForgotScrren extends StatefulWidget {
+  const ForgotScrren({super.key});
 
   @override
-  State<EditScreen> createState() => _EditScreenState();
+  State<ForgotScrren> createState() => _ForgotScrrenState();
 }
 
-class _EditScreenState extends State<EditScreen> {
+class _ForgotScrrenState extends State<ForgotScrren> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => EditProvider(),
-      child: Consumer<EditProvider>(
+      create: (context) => ForgotProvider(),
+      child: Consumer<ForgotProvider>(
         builder: (context, model, child) => Scaffold(
           appBar: AppBar(
             leading: InkWell(
                 onTap: () {
                   Get.back();
                 },
-                child: Icon(Icons.arrow_back_ios_new)),
+                child: Icon(Icons.arrow_back_ios)),
           ),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundColor: Colors.grey.withOpacity(0.4),
-                  child: CircleAvatar(
-                    radius: 40.r,
-                    backgroundImage: AssetImage('assets/s.PNG'),
-                  ),
+                child: Image.asset(
+                  'assets/logo.png',
                 ),
               ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Text('Your Name'),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Forgot ',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 25.sp,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'Here enter your new password',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w400),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Text('Old Password'),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -56,7 +75,7 @@ class _EditScreenState extends State<EditScreen> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Text('Your Email'),
+                child: Text('New Password'),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -69,20 +88,7 @@ class _EditScreenState extends State<EditScreen> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Text('Your Password'),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Text('Enter Phone Number'),
+                child: Text('Re-Enter Yor New Password'),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -109,7 +115,7 @@ class _EditScreenState extends State<EditScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        'Next',
+                        'Change Password',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.sp,

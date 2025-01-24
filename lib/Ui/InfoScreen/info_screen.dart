@@ -3,24 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:smit_project_ui/Ui/ForgotScreen/forgot_scrren.dart';
-import 'package:smit_project_ui/Ui/InfoScreen/info_screen.dart';
-import 'package:smit_project_ui/Ui/LoginScreen/login_provider.dart';
+import 'package:smit_project_ui/Ui/EditScreen/edit_screen.dart';
+import 'package:smit_project_ui/Ui/InfoScreen/info_screen_provider.dart';
 import 'package:smit_project_ui/Ui/SignInScreen/sign_in_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class InfoScreen extends StatefulWidget {
+  const InfoScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<InfoScreen> createState() => _InfoScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _InfoScreenState extends State<InfoScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => LoginProvider(),
-      child: Consumer<LoginProvider>(
+      create: (context) => InfoScreenProvider(),
+      child: Consumer<InfoScreenProvider>(
         builder: (context, model, child) => Scaffold(
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Login',
+                    'Your Info',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 25.sp,
@@ -48,7 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  'Loin to access your acount and explore all the exciting features  we\'ve crafted for you',
+                  'Show yor information in this screen through\nShared Preferences',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 15.sp,
@@ -58,44 +58,42 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Text('Your Email'),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFormField(
-                  controller: model.email,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Text('Your Password'),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFormField(
-                  controller: model.password,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: InkWell(
-                    onTap: () {
-                      Get.to(ForgotScrren());
-                    },
+                child: Align(
+                    alignment: Alignment.bottomRight,
                     child: Text(
-                      'Forgot password?',
+                      'Logout?',
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
+                          color: Colors.black,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.bold),
+                    )),
+              ),
+              Center(
+                child: Container(
+                  height: 50.h,
+                  width: 300.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Center(
+                    child: Text('Hello words'),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Center(
+                child: Container(
+                  height: 50.h,
+                  width: 300.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey),
+                  ),
+                  child: Center(
+                    child: Text('Hello words'),
                   ),
                 ),
               ),
@@ -105,18 +103,18 @@ class _LoginScreenState extends State<LoginScreen> {
               Center(
                 child: InkWell(
                   onTap: () {
-                    Get.to(InfoScreen());
+                    Get.to(EditScreen());
                   },
                   child: Container(
                     height: 50.h,
                     width: 300.w,
                     decoration: BoxDecoration(
                       color: Color(0xFF263238),
-                      borderRadius: BorderRadius.circular(35),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(
                       child: Text(
-                        'Login',
+                        'Show your information here',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.sp,
@@ -152,29 +150,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(
                 height: 10.h,
-              ),
-              Center(
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(text: 'Login with'),
-                      TextSpan(
-                        text: '  Mobile No.',
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignInScreen(),
-                              ),
-                            );
-                          },
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
               ),
               SizedBox(
                 height: 50.h,
